@@ -64,7 +64,6 @@ public class UserController {
     	
     	}
     	
-    	
     	final UserDetails user = userService.loadUserByUsername(userContext.getSubject());
     	
     	final String jwt = jwtTokenUtil.generateToken(user.getUsername(),new ArrayList<>());

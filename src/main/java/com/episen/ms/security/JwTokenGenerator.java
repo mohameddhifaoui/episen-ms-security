@@ -52,12 +52,16 @@ public class JwTokenGenerator {
 		SignedJWT signedJwt = new SignedJWT(header, claimsSet);
 		
 		try {
+			
 			signedJwt.sign(signer);
+		
 		} catch (JOSEException e) {
+			
 			throw new RuntimeException(e);
 		}
 		
 		return signedJwt.serialize();
+		
 	}
 	
 }
