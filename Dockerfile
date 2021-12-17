@@ -1,15 +1,22 @@
 FROM openjdk:11
 
-RUN apt-get update -y -q \ # resynchronize the package index files from their sources
+# resynchronize the package index files from their sources
+RUN apt-get update -y -q \
 
-&& apt-get install -y -q git maven \ # install git and maven to use in project
+# installing git and maven to use in our project
+&& apt-get install -y -q git maven \
 
-&& git clone https://github.com/mohameddhifaoui/episen-ms-security \ # cloning the project from the github repository
+# cloning the project from my github repository
+&& git clone https://github.com/mohameddhifaoui/episen-ms-security \
 
-&& cd episen-ms-security/ \ # Accesing the repository cloned
+# Accesing the directory of the project
+&& cd episen-ms-security/ \
 
-&& mvn clean install # Building the project
+# Building the project
+&& mvn clean install
 
-WORKDIR episen-ms-security/ # Defining the working directory for our docker project  
+# Defining the working directory for our docker project  
+WORKDIR episen-ms-security/
 
-ENTRYPOINT ["java","-jar","./target/episen-ms-security-1.0.0-SNAPSHOT.jar"] # Running the project 
+# Running the project
+ENTRYPOINT ["java","-jar","./target/episen-ms-security-1.0.0-SNAPSHOT.jar"] 
